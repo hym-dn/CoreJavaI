@@ -14,23 +14,26 @@ public class WelcomeApplet extends JApplet
     {
         EventQueue.invokeLater(new Runnable()
         {
-            setLayout(new BorderLayout());
-            
-            JLabel label=JLabel(getParameter("greeting"),SwingConstants.CENTER);
-            label.setFont(new Font("Serif",Font.BOLD,18));
-            add(label,BorderLayout.CENTER);
+            public void run()
+            {
+                setLayout(new BorderLayout());
+                
+                JLabel label=new JLabel(getParameter("greeting"),SwingConstants.CENTER);
+                label.setFont(new Font("Serif",Font.BOLD,18));
+                add(label,BorderLayout.CENTER);
 
-            JPanel panel=new JPanel();
+                JPanel panel=new JPanel();
 
-            JButton cayButton=new JButton("Cay Horstmann");
-            cayButton.addActionListener(makeAction("http://www.horstmann.com"));
-            panel.add(cayButton);
+                JButton cayButton=new JButton("Cay Horstmann");
+                cayButton.addActionListener(makeAction("http://www.horstmann.com"));
+                panel.add(cayButton);
 
-            JButton garyButton=new JButton("Gary Cornell");
-            garyButton.addActionListener(makeAction("mailto:gary_cornell@apress.com"));
-            panel.add(garyButton);
+                JButton garyButton=new JButton("Gary Cornell");
+                garyButton.addActionListener(makeAction("mailto:gary_cornell@apress.com"));
+                panel.add(garyButton);
 
-            add(panel,BorderLayout.SOUTH);
+                add(panel,BorderLayout.SOUTH);
+            }
         });
     }
     
