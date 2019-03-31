@@ -2,6 +2,47 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - EnumTest",
+            "request": "launch",
+            "mainClass": "EnumTest",
+            "projectName": "CoreJavaI_470a012c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ParamTest",
+            "request": "launch",
+            "mainClass": "ParamTest",
+            "projectName": "CoreJavaI_470a012c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Employee",
+            "request": "launch",
+            "mainClass": "Employee",
+            "projectName": "CoreJavaI_470a012c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - StaticTest",
+            "request": "launch",
+            "mainClass": "StaticTest",
+            "projectName": "CoreJavaI_470a012c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - FirstSample",
+            "request": "launch",
+            "mainClass": "FirstSample",
+            "projectName": "CoreJavaI_470a012c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ImageViewer",
+            "request": "launch",
+            "mainClass": "ImageViewer"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Welcome",
             "request": "launch",
             "mainClass": "Welcome"
