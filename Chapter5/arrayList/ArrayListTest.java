@@ -7,6 +7,7 @@ import java.util.*;
  * @version 1.1 2004-02-21
  * @author Cay Horstmann
  */
+
 public class ArrayListTest
 {
     public static void main(String[] args)
