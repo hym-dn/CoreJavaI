@@ -20,10 +20,10 @@ public class LambdaTest
         Arrays.sort(planets);
         System.out.println(Arrays.toString(planets));
         System.out.println("Sorted by length:");
-        Arrays.sort(planets,(first,second)->first.length()-second.length());
+        Arrays.sort(planets,(first,second)->first.length()-second.length()); /**< 能够推导出Lambda参数类型，在此可以略去参数类型 */
         System.out.println(Arrays.toString(planets));
 
-        Timer t=new Timer(1000,event->System.out.println("The time is "+new Date()));
+        Timer t=new Timer(1000,event->System.out.println("The time is "+new Date())); /**< 只有一个参数，并且能够推导类型，则可以省略小括号 */
         t.start();
 
         // keep program running until user select "OK"
