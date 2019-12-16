@@ -37,11 +37,12 @@ public class GenericReflectionTest
 		}
 	}
 
+	// 打印类型信息
 	public static void printClass(Class<?> cl)
 	{
 		System.out.print(cl);
-		printTypes(cl.getTypeParameters(),"<",", ",">",true);
-		Type sc=cl.getGenericSupperclass();
+		printTypes(cl.getTypeParameters(),"<",", ",">",true); // 获取泛型类型变量，并且打印出来
+		Type sc=cl.getGenericSuperclass(); // 获得被声明为这一类型的超类的泛型类型; 如果这个类型是 Object 或不是一个类类型(classtype), 则返回null
 		if(sc!=null)
 		{
 			System.out.println(" extends ");
@@ -51,6 +52,7 @@ public class GenericReflectionTest
 		System.out.println();
 	}
 
+	// 打印方法
 	public static void printMethod(Method m)
 	{
 		String name=m.getName();
@@ -65,6 +67,7 @@ public class GenericReflectionTest
 		System.out.println(")");
 	}
 
+	// 打印泛型变量
 	public static void printTypes(Type[] types,String pre,String sep,String suf,boolean isDefinition)
 	{
 		if(pre.equals(" extend ")&&Arrays.equals(types,new Type[]{Object.class})) return;
@@ -72,18 +75,21 @@ public class GenericReflectionTest
 		for(int i=0;i<types.length;i++)
 		{
 			if(i>0) System.out.print(sep);
-			printType(types[i],isDefinition);
+			printType(types[i],isDefinition); // 打印类型
 		}
 		if(types.length>0) System.out.print(suf);
 	}
 
+	// 打印类型
 	public static void printType(Type type,boolean isDefinition)
 	{
+		// 类类型
 		if(type instanceof Class)
 		{
 			Class<?> t=(Class<?>) type;
 			System.out.print(t.getName());
 		}
+		// 类型变量
 		else if(type instanceof TypeVariable)
 		{
 			TypeVariable<?> t=(TypeVariable<?>) type;
@@ -91,13 +97,15 @@ public class GenericReflectionTest
 			if(isDefinition)
 				printTypes(t.getBounds()," extend "," & ","",false); 
 		}
-		else if(type instanceof WildCardType)
+		// 通配符
+		else if(type instanceof WildcardType)
 		{
-			WildCardType t=(WildCardType) type;
+			WildcardType t=(WildcardType) type;
 			System.out.print("?");
 			printTypes(t.getUpperBounds()," extend "," & ","",false);
 			printTypes(t.getLowerBounds()," super "," & ","",false);
 		}
+		// 描述泛型类或接口类
 		else if(type instanceof ParameterizedType)
 		{
 			ParameterizedType t=(ParameterizedType) type;
@@ -110,6 +118,7 @@ public class GenericReflectionTest
 			printType(t.getRawType(),false);
 			printTypes(t.getActualTypeArguments(),"<",", ",">",false);
 		}
+		// 描述泛型数组
 		else if(type instanceof GenericArrayType)
 		{
 			GenericArrayType t=(GenericArrayType) type;
